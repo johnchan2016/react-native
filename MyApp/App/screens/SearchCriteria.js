@@ -12,6 +12,7 @@ import {
   Text, 
   Icon,
   Input,
+  InputGroup,
   Picker,
   Form
 } from "native-base";
@@ -69,16 +70,20 @@ class SearchCriteria extends Component {
     });
   }
 
+  _clearText(fieldName) {
+    this.refs[fieldName].wrappedInstance.clear();
+  }  
+
   render(){
     return (
       <Container >
         <Header>
           <Left style={headerStyles.headerLT}>
-            <Button
+{/*            <Button
               transparent
               onPress={() => this.props.navigation.navigate("Log Out")}>
-              <Icon name="ios-arrow-back" style={headerStyles.icon}/>
-            </Button>
+              <Icon name="ios-arrow-round-back" style={styles.headerIcon}/>
+            </Button>*/}
           </Left>
           <Body style={headerStyles.headerBD}>
             <Title>Property Search</Title>
@@ -89,21 +94,27 @@ class SearchCriteria extends Component {
         <Content contentContainerStyle={styles.contentContainer} 
                  keyboardShouldPersistTaps='always'>
           <Form style={searchStyle.formContainer}>
-            <View>              
+            <InputGroup>              
               <Text style={searchStyle.label}>Place:</Text>
-            </View>
-            <View style={searchStyle.control}>
+            </InputGroup>
+            <InputGroup style={searchStyle.control}>
                 <Input
                   value={this.state.searchString}
                   onChange={this.onSearchTextChanged}
-                  placeholder='Search via name or postcode in UK'/>
-            </View>
+                  placeholder='Search via name or postcode in UK'
+                  ref={'Password'}
+                  autoFocus={true}
+                  />
+                  <Icon name="ios-close" style={styles.headerIcon}
+                    onPress={() => this._clearText('Password')}
+                  />   
+            </InputGroup>
 
-            <View style={searchStyle.separator}/>
+            <InputGroup style={searchStyle.separator}/>
 
-            <View>              
+            <InputGroup>              
               <Text style={searchStyle.label}>Listing Type:</Text>
-            </View>
+            </InputGroup>
             <View style={searchStyle.control} >
               <Picker
                   iosHeader="Select one"
@@ -115,14 +126,14 @@ class SearchCriteria extends Component {
               </Picker>
             </View>
 
-            <View style={searchStyle.separator}/>
+            <InputGroup style={searchStyle.separator}/>
 
-            <View style={searchStyle.button}>
-              <Button primary full rounded 
+            <InputGroup >
+              <Button primary full rounded style={searchStyle.button}
                 onPress={() => this._getSearchInput(this.state.searchString, this.state.selectedItem) }>
                 <Text>Search</Text>
               </Button>  
-            </View>
+            </InputGroup>
           </Form>
 
         </Content>

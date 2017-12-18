@@ -1,7 +1,6 @@
 import { NavigationActions } from 'react-navigation';
 
 import * as types from 'App/redux/actions/actionTypes';  
-import {NavHelper} from 'App/Helpers';
 import * as firebaseManager from 'App/utils/firebaseManager';
 
 function requestLogin() {

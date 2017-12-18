@@ -4,6 +4,7 @@ import LoginScreen from 'App/screens/Login';
 import SignUpScreen from 'App/screens/SignUp';
 import SearchCriteriaScreen from 'App/screens/SearchCriteria';
 import PropertySummaryScreen from 'App/screens/PropertySummary';
+import PropertyDetailScreen from 'App/screens/PropertyDetail';
 
 const headerOptions =  {
     header: null,
@@ -18,7 +19,8 @@ export const StackNavigatorConfig = StackNavigator({
     Login: { screen: LoginScreen },
     SignUp: { screen: SignUpScreen },
     SearchCriteria: { screen: SearchCriteriaScreen },
-    PropertySummary: { screen: PropertySummaryScreen }
+    PropertySummary: { screen: PropertySummaryScreen },
+    PropertyDetail: {screen: PropertyDetailScreen}
   },
   headerOptions
 );

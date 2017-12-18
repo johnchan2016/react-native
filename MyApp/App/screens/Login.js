@@ -36,6 +36,13 @@ class Login extends Component {
     }
   }
 
+  _clearText(fieldName) {
+    this.refs[fieldName].wrappedInstance.clear();
+    this.refs[fieldName].wrappedInstance.focus();
+
+    console.log(this.refs);
+  }
+
   render() {
 
   let payload;
@@ -59,7 +66,7 @@ class Login extends Component {
             <Button
               transparent
               onPress={() => this.props.navigation.navigate("Home")}>
-              <Icon name="ios-arrow-back" />
+              <Icon name="ios-arrow-round-back" />
             </Button>
           </Left>
           <Body>
@@ -88,7 +95,11 @@ class Login extends Component {
                   value={this.state.username}
                   placeholder={"Email Address"} 
                   autoFocus={true}
+                  ref={'Username'}
                 />             
+                <Icon name="ios-close" style={styles.headerIcon}
+                  onPress={() => this._clearText('Username')}
+                />
               </InputGroup>
               
               <InputGroup style={loginStyles.input}>
@@ -97,8 +108,12 @@ class Login extends Component {
                     onChangeText={(password) => this.setState({ password })}
                     value={this.state.password}
                     secureTextEntry={true}
-                    placeholder={"Password"} 
-                  />              
+                    placeholder={"Password"}
+                    ref={'Password'}
+                  />       
+                  <Icon name="ios-close" style={styles.headerIcon}
+                    onPress={() => this._clearText('Password')}
+                  />       
               </InputGroup>
 
               <View style={loginStyles.separator}/>

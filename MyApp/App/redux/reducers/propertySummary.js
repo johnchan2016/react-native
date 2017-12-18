@@ -3,8 +3,9 @@ import * as types from 'App/redux/actions/actionTypes';
 const initialState = {
     isLoading: false,
     currentPage: 1,
-    lastPage: '',
-    payload: '',
+    lastPage: undefined,
+    payload: undefined,
+    error: undefined,
     index: 0
 };
  
@@ -21,21 +22,31 @@ export default function propertySummary(state = initialState, action) {
           currentPage: action.currentPage,
           lastPage: action.lastPage,
           payload: action.payload,
+          error: undefined,
           index: 0
         });
 
       case types.SEARCH_FAILURE: 
         return Object.assign({}, state, { 
           isLoading: false,
-          payload: action.payload
+          payload: undefined,
+          error: action.payload
         });
 
-      case types.VIEW_PROPERTY_DETAIL: 
+      case types.UPDATE_PROPERTYINDEX: 
         return Object.assign({}, state, { 
           isLoading: false,
-          index: action.index
+          index: action.index,
         });
-
+      case types.RESET_PROPERTYDATA:
+        return Object.assign({}, ...state , { 
+          isLoading: false,
+          currentPage: action.currentPage,
+          lastPage: action.lastPage,
+          payload: action.payload,
+          error: action.error,
+          index: 0
+        });
       default:
           return state;
     }

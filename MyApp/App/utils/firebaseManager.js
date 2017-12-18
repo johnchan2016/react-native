@@ -2,7 +2,6 @@ import firebase from 'firebase';
 
 import {configs} from 'App/systemSettings/configs';
 import * as types from 'App/redux/actions/actionTypes';  
-import {NavHelper} from 'App/Helpers';
 
 
 firebase.initializeApp(configs.firebase);
@@ -34,7 +33,7 @@ export function onAuthPermission () {
   return function(dispatch) {
     Auth.onAuthStateChanged((user) => {
       if (!user) {
-        dispatch(NavHelper('Login'));
+        dispatch({type: 'Login'});
         console.log('redirect to loginPage');
       }
     });

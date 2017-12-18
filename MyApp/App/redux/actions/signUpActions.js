@@ -1,7 +1,6 @@
 import * as types from 'App/redux/actions/actionTypes';  
 import { NavigationActions } from 'react-navigation';
 
-import { NavHelper } from 'App/Helpers';
 import { ResetLoginState } from 'App/redux/actions';
 import { SIGNUP_FAILURE_DIFFERENTPASSWORD, SIGNUP_FAILURE_NOTEMPTY } from 'App/systemSettings/constants';
 import * as firebaseManager from 'App/utils/firebaseManager';

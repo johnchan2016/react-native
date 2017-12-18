@@ -12,7 +12,6 @@ import { NavigationActions } from 'react-navigation';
 
 import { loginStyles } from 'App/styles';
 import { signUpUser, ResetLoginState, ResetSignUpState } from 'App/redux/actions';
-import {NavHelper} from 'App/Helpers';
 
 
 class SignUpButton extends Component{

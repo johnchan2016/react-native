@@ -17,8 +17,8 @@ function SearchSuccess(result, currentPage, lastPage) {
     type: types.SEARCH_SUCCESS,
     isLoading: false,
     payload: result,
-    currentPage: currentPage,
-    lastPage: lastPage,
+    currentPage,
+    lastPage,
     index: 0
   }
 }
@@ -27,7 +27,26 @@ function SearchFailure(error) {
   return {
     type: types.SEARCH_FAILURE,
     isLoading: false,
-    payload: error
+    error
+  }
+}
+
+function UpdatePropertyIndex(index){
+  return {
+    type: types.UPDATE_PROPERTYINDEX,
+    index
+  }
+}
+
+function Reset(){
+  return {
+    type: types.RESET_PROPERTYDATA,
+    isLoading: false,
+    currentPage: 1,
+    lastPage: undefined,
+    payload: undefined,
+    error: undefined,
+    index: 0
   }
 }
 
@@ -39,19 +58,23 @@ export function GetPropertyData(params, currentPage) {
     const url = SEARCH_API + queryString;
 
     axios.get(url)
-    .then( 
-      (res) => {      
-        let json = res.data;
-        const lastPage = json.response.total_pages;
-        let data = json.response.listings;
+    .then( res => {      
+      let json = res.data;
+      const lastPage = json.response.total_pages;
+      let data = json.response.listings;
 
-        console.log(`dispatch Data: ${Date.now()}`);
-
-        dispatch(SearchSuccess(data, currentPage, lastPage));
-      },
-      (error) => {
-        dispatch(SearchFailure(error));
-      }
-    )
+      dispatch(SearchSuccess(data, currentPage, lastPage));
+    })
+    .catch( error => {
+      dispatch(SearchFailure(error));
+    })
   };
+}
+
+export function UpdatePropertyDetailIndex(index){
+  return UpdatePropertyIndex(index);
+}
+
+export function ResetPropertyData(){
+  return Reset();
 }

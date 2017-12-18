@@ -8,7 +8,7 @@ export const headerStyles = StyleSheet.create({
     flex: 1.3
   },
   icon:{
-    fontSize: 40
+    fontSize: 50
   },
   headerBD: {
     flex : 2

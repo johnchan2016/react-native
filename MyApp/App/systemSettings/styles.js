@@ -14,5 +14,13 @@ export default StyleSheet.create({
     backgroundColor:'transparent',
     resizeMode: 'cover',
   },
-
+  headerIcon: {
+    fontSize: 25
+  },
+  indicator:{
+    flex:1,
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent:'center',
+  },
 });

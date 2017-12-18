@@ -52,6 +52,12 @@ export default function nav(state = initialNavState, action) {
         state
       );
       break;
+      case 'PropertyDetail':
+      nextState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'PropertyDetail' }),
+        state
+      );
+      break;
     default:
       nextState = AppNavigator.router.getStateForAction(action, state);
       break;

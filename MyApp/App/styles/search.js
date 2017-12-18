@@ -21,7 +21,7 @@ formContainer: {
     marginTop: '10%'
   },
   button:{
-    width:'80%',
-    alignItems:'center',
+    flex: 0.8, 
+    justifyContent: 'center'
   }
 });

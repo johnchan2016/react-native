@@ -34,6 +34,11 @@ class SignUp extends Component {
     }
   }
 
+    _clearText(fieldName) {
+    this.refs[fieldName].wrappedInstance.clear();
+    this.refs[fieldName].wrappedInstance.focus();
+  }
+
   render() {
 
     let payload;
@@ -73,7 +78,11 @@ class SignUp extends Component {
                   value={this.state.username}
                   placeholder={"Email Address"} 
                   autoFocus={true}
-                />             
+                  ref={'Username'}
+                />
+                <Icon name="ios-close" style={styles.headerIcon}
+                  onPress={() => this._clearText('Username')}
+                />
               </InputGroup>
               
               <InputGroup style={loginStyles.input}>
@@ -83,6 +92,10 @@ class SignUp extends Component {
                   value={this.state.password}
                   secureTextEntry={true}
                   placeholder={"Password"}
+                  ref={'Password'}
+                />                
+                <Icon name="ios-close" style={styles.headerIcon}
+                  onPress={() => this._clearText('Password')}
                 />                   
               </InputGroup>
 
@@ -92,8 +105,12 @@ class SignUp extends Component {
                   onChangeText={(confirmPassword) => this.setState({ confirmPassword })}
                   value={this.state.confirmPassword}
                   secureTextEntry={true}
-                  placeholder={"Confirm Password"} 
-                />                                         
+                  placeholder={"Confirm Password"}
+                  ref={'ConfirmPassword'}
+                />      
+                <Icon name="ios-close" style={styles.headerIcon}
+                  onPress={() => this._clearText('ConfirmPassword')}
+                />                                                   
               </InputGroup>
 
               <View style={loginStyles.separator}/>
@@ -112,7 +129,7 @@ class SignUp extends Component {
               transparent
               onPress={() => this.props.navigation.navigate("Login")}
             >
-              <Icon name="ios-arrow-back" />
+              <Icon name="ios-arrow-round-back" />
             </Button>
           </Left>
           <Body>

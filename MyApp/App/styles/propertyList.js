@@ -81,5 +81,5 @@ export const plStyles = StyleSheet.create({
     fontSize: 14,
     alignSelf: 'center',
     justifyContent: 'center'
-  }
+  },
 });
