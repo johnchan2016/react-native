@@ -50,11 +50,13 @@ function Reset(){
   }
 }
 
-export function GetPropertyData(params, currentPage) {
+export function GetPropertyData(params, page) {
   return function(dispatch) {  
-    dispatch(SearchRequest());    
+    dispatch(SearchRequest());
 
-    const queryString = MapData(params, '&');
+    let updatedParams = {...params, page};
+
+    const queryString = MapData(updatedParams, '&');
     const url = SEARCH_API + queryString;
 
     axios.get(url)
@@ -63,7 +65,7 @@ export function GetPropertyData(params, currentPage) {
       const lastPage = json.response.total_pages;
       let data = json.response.listings;
 
-      dispatch(SearchSuccess(data, currentPage, lastPage));
+      dispatch(SearchSuccess(data, page, lastPage));
     })
     .catch( error => {
       dispatch(SearchFailure(error));

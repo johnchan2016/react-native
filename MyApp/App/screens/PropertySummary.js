@@ -9,6 +9,7 @@ import {
   Button, 
   Body, 
   Content,
+  Footer,
   Text, 
   Icon,
   Input,
@@ -19,10 +20,11 @@ import axios  from 'axios';
 import { NavigationActions } from 'react-navigation';
 
 import images from 'App/systemSettings/images';
-import { headerStyles } from 'App/styles';
+import { headerStyles, footerStyles } from 'App/styles';
 import styles from 'App/systemSettings/styles';
 import  PropertyList  from 'App/components/PropertyList';
 import { GetPropertyData, ResetPropertyData } from 'App/redux/actions';
+import PaginationTab from 'App/components/Pagination/PaginationTab';
 
 
 class PropertySummary extends Component {
@@ -36,18 +38,17 @@ class PropertySummary extends Component {
 
   componentWillMount() {
     if(!this.props.propertyData){
-      this._genPropertyList(this.props.inputParams);
+      this._genPropertyList(this.props.inputParams, this.props.currentPage = 1);
     }
     Keyboard.dismiss();
-
   }
 
   _toSearchCriteria = () => {
     this.props.toSearchCriteriaScreen();
   }
 
-  _genPropertyList = (params) => {
-   this.props.getPropertyData(params, 1);
+  _genPropertyList = (params, selectedPage) => {
+    this.props.getPropertyData(params, selectedPage);
   }
 
   _clearText(fieldName) {
@@ -61,7 +62,9 @@ class PropertySummary extends Component {
 
   render() {
 
-    let propertyList = undefined;
+    let propertyList,
+        footer;
+
     if(this.props.isLoading){
       propertyList = (
         <ActivityIndicator size={108} style= {styles.indicator}/> 
@@ -81,6 +84,15 @@ class PropertySummary extends Component {
     if(this.props.propertyData){
       propertyList = (
         <PropertyList data={this.props.propertyData} />
+      )
+
+      footer = (
+        <Footer style={footerStyles.propertySummary}>
+          <PaginationTab currentPage={this.props.currentPage} 
+            lastPage={this.props.lastPage} 
+          />
+        </Footer>
+
       )
     }
 
@@ -125,12 +137,15 @@ class PropertySummary extends Component {
       )
     }
 
+
     return (
+
       <Container>
         {header}
         <Content contentContainerStyle={styles.contentContainer}>
           {propertyList}
         </Content>
+        {footer}
       </Container>
     );
   }
@@ -138,9 +153,11 @@ class PropertySummary extends Component {
 
 const mapStateToProps = (state) => {
     return {
+      inputParams: state.searchCriteria.inputParams,
       isLoading: state.propertySummary.isLoading,
       error: state.propertySummary.error,
-      inputParams: state.searchCriteria.inputParams,
+      currentPage: state.propertySummary.currentPage,
+      lastPage: state.propertySummary.lastPage,
       propertyData: state.propertySummary.payload
     };
 }
@@ -150,8 +167,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch( NavigationActions.navigate({ routeName: 'SearchCriteria'})  );
     dispatch( ResetPropertyData())
   },
-  getPropertyData: (params, currentPage) => {
-    dispatch(GetPropertyData(params, currentPage));
+  getPropertyData: (params, selectedPage) => {
+    dispatch(GetPropertyData(params, selectedPage));
   }
 });
  
