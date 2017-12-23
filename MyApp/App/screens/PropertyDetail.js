@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent  } from 'react';
 import { Image, View } from 'react-native';
 import { 
   Container, 
@@ -25,7 +25,7 @@ import * as firebaseManager from 'App/utils/firebaseManager';
 import { Separator } from 'App/components';
 import images from 'App/systemSettings/images';
 
-class PropertyDetail extends Component {
+class PropertyDetail extends PureComponent  {
 
   _toPropertySummary = () => {
     this.props.toPropertySummaryScreen();

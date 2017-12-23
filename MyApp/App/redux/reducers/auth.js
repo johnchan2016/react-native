@@ -3,8 +3,8 @@ import * as types from 'App/redux/actions/actionTypes';
 const initialState = {
     isLoading: false,
     isAuthenticated: false,
-    username: '',
-    payload: ''
+    username: null,
+    payload: null
 };
  
 export default function auth(state = initialState, action) {
@@ -18,7 +18,7 @@ export default function auth(state = initialState, action) {
           isLoading: false,
           isAuthenticated: true,
           username: action.username,
-          payload:''
+          payload: null
         });
       case types.LOGIN_FAILURE: 
         return Object.assign({}, state, { 

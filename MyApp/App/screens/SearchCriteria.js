@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Image, View } from 'react-native';
 import { 
   Container, 
@@ -27,7 +27,7 @@ import { searchParams } from 'App/systemSettings/constants';
 
 
 const Item = Picker.Item;
-class SearchCriteria extends Component {
+class SearchCriteria extends PureComponent  {
     constructor(props){
     super(props);
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Image} from 'react-native';
 import { 
   Container, 
@@ -23,7 +23,7 @@ import {headerStyles, homeStyles} from 'App/styles';
 import {Separator} from 'App/components';
 
 
-export default class Home extends Component {
+export default class Home extends PureComponent {
     constructor(props){
     super(props);
 

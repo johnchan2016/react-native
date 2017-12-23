@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Image, View, Keyboard } from 'react-native';
 import { 
   Container, 
@@ -23,7 +23,7 @@ import {headerStyles, homeStyles, loginStyles} from 'App/styles';
 import styles from 'App/systemSettings/styles';
 import SignUpButton from 'App/components/SignUpButton';
 
-class SignUp extends Component {
+class SignUp extends PureComponent  {
   constructor(props){
     super(props);
     

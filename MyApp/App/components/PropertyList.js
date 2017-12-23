@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent  } from 'react';
 import { Image, View, TouchableHighlight } from 'react-native';
 import { 
   Button, 
@@ -15,7 +15,7 @@ import { plStyles } from 'App/styles';
 import { Separator } from 'App/components';
 import { UpdatePropertyDetailIndex } from 'App/redux/actions';
 
-class PropertyList extends Component {
+class PropertyList extends PureComponent  {
 
   _toPropertyDetail = (i) => {
     this.props.toPropertyDetailScreen();
@@ -23,7 +23,7 @@ class PropertyList extends Component {
   }
 
   render() {
-    const {data} = this.props;
+    const { data } = this.props;
     var count = 0;
 
     return (

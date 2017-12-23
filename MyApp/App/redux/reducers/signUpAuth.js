@@ -2,7 +2,7 @@ import * as types from 'App/redux/actions/actionTypes';
 
 const initialState = {
     isLoading: false,
-    payload: ''
+    payload: null
 };
  
 export default function signUpAuth(state = initialState, action) {
@@ -14,7 +14,7 @@ export default function signUpAuth(state = initialState, action) {
       case types.SIGNUP_SUCCESS: 
         return Object.assign({}, ...state , { 
           isLoading: false,
-          payload:''
+          payload: null
         });
       case types.SIGNUP_FAILURE: 
         return Object.assign({}, state, { 

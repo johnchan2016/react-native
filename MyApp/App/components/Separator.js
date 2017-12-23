@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent  } from 'react';
 import {View, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export class Separator extends Component {
+export class Separator extends PureComponent  {
 
   render() {
     return (

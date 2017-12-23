@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Image, View, ScrollView, ActivityIndicator, Keyboard } from 'react-native';
 import { 
   Container, 
@@ -20,14 +20,14 @@ import axios  from 'axios';
 import { NavigationActions } from 'react-navigation';
 
 import images from 'App/systemSettings/images';
-import { headerStyles, footerStyles } from 'App/styles';
+import { headerStyles, footerStyles, psStyles } from 'App/styles';
 import styles from 'App/systemSettings/styles';
 import  PropertyList  from 'App/components/PropertyList';
 import { GetPropertyData, ResetPropertyData } from 'App/redux/actions';
 import PaginationTab from 'App/components/Pagination/PaginationTab';
 
 
-class PropertySummary extends Component {
+class PropertySummary extends PureComponent  {
   constructor(props) {
     super(props);
 
@@ -119,24 +119,23 @@ class PropertySummary extends Component {
       )
     }else{
       header = (
-        <Header searchBar rounded>
-          <Button transparent iconLeft small style={{flex: 0.5, marginRight: '2%'}}
+        <Header searchBar rounded style={psStyles.header}>
+          <Button transparent iconLeft small style={psStyles.back}
             onPress={() => this._changeHeaderStyle()}>
             <Icon name="ios-arrow-round-back" style={styles.headerIcon} />
           </Button>
-          <Item style={{flex: 2.5}}>
+          <Item style={psStyles.searchBox}>
             <Input placeholder="Search" autoFocus={true} ref={'SearchInput'} />
             <Icon name="ios-close" style={styles.headerIcon}
               onPress={() => this._clearText('SearchInput')}
             />
           </Item>
-          <Button iconLeft success small style={{flex:1, marginLeft: '2%'}}>
+          <Button iconLeft success small style={psStyles.searchButton}>
             <Text>Search</Text>
           </Button>
         </Header>
       )
     }
-
 
     return (
 

@@ -1,7 +1,7 @@
 import * as types from 'App/redux/actions/actionTypes';
 
 const initialState = {
-    inputParams: ''
+    inputParams: null
 };
  
 export default function searchCriteria(state = initialState, action) {

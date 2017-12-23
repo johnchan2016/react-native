@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Image, View } from 'react-native';
 import { 
   Button, 
@@ -12,7 +12,7 @@ import { NavigationActions } from 'react-navigation';
 
 import {loginStyles} from 'App/styles';
 
-export class LogoutButton extends Component{
+export class LogoutButton extends PureComponent{
   constructor (props) {
       super(props);
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import { Image, View } from 'react-native';
 import { 
   Container, 
@@ -26,7 +26,7 @@ import SignUpButton from 'App/components/SignUpButton';
 import * as firebaseManager from 'App/utils/firebaseManager';
 
 
-class Login extends Component {
+class Login extends PureComponent {
   constructor(props){
     super(props);
 
@@ -34,6 +34,12 @@ class Login extends Component {
       username: 'myhk2009@gmail.com',
       password: 'myhk2009'
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    var isUdpate = !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
+    console.log(`isUpdate: ${isUdpate}`);
+    return isUdpate;
   }
 
   _clearText(fieldName) {

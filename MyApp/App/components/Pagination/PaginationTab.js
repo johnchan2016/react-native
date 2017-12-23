@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent  } from 'react';
 import { Image, View, ScrollView, ActivityIndicator, Keyboard } from 'react-native';
 import { 
   Container, 
@@ -21,7 +21,7 @@ import PaginationButton from './PaginationButton';
 import PaginationInput  from './PaginationInput';
 
 
-export default class PaginationTab extends Component {
+export default class PaginationTab extends PureComponent {
   constructor(props) {
     super(props);
   }
