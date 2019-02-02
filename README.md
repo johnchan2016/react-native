@@ -13,20 +13,20 @@ To try developing an app with web skills.
 screen captured from genymotion
 
 **HomePage**
-![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/home.png)
+![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/home.png =260x386)
 
 **LoginPage**
-Login with firebase auth by email/Password
-![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/login.png)
+Login with firebase auth by email/Password <br/>
+![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/login.png =260x386)
 
 **Property Search**
-After login successful, you will be redirected to Search Properties
-![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/search.png)
+After login successful, you will be redirected to Search Properties <br/>
+![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/search.png =260x386)
 
 **Property List**
-When criteria filled, it will display desired results
-![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/list.png)
+When criteria filled, it will display desired results <br/>
+![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/list.png =260x386)
 
 **Property Detail**
-When specific property is selected, property detail will be shown.
-![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/detail.png)
+When specific property is selected, property detail will be shown. <br/>
+![alt text](https://github.com/johnchan2016/react-native/blob/master/screens/detail.png =260x386)
