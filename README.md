@@ -1,8 +1,11 @@
 # React-native Trial (last updated in Dec 2017)
 
-To study react-native with redux, firebase, immutableJS, axios & genymotion
+To study react-native with redux, firebase, axios & genymotion
+
 UI Framework: native base
-[Api contributor](http://api.nestoria.co.uk)
+
+Api contributor: [nestoria](http://api.nestoria.co.uk)
+
 
 ## Getting Started
 
